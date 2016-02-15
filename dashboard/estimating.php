@@ -24,6 +24,12 @@ if(isset($_POST['qdate']))
 {
 $value=$_POST['status'];
 $user=$_SESSION['USER_LOGGED_IN']['Id'];
+$username=$_SESSION['USER_LOGGED_IN']['Firstname']." ".$_SESSION['USER_LOGGED_IN']['Lastname'];
+
+$g="select * from projects where id=$pid";
+$resg=mysql_query($g);
+$my=mysql_fetch_array($resg);
+$pname=$my['name'];
     
 $pid=$_GET['id'];
 $dat=$_POST['qdate'];
@@ -42,7 +48,7 @@ $res=mysql_query($q);
 if($res)
 {
     echo "Info saved";
-    if($value="approved")
+    if($value=="approved")
     {
     $subject = "Quote manager approved in Gameboard";
                         $headers = array(
@@ -52,11 +58,12 @@ if($res)
 					    "Reply-To: HELP <HELP@StrategicPointMarketing.com>",
 					    "Content-Type: text/html;charset=iso-8859-1"
 					    );
-                        $message = "<strong>Quote Approved in Gameboard.</strong><br />";
+                        $message = "<strong>hello!</strong><br />";
+                        $message =$message."A Takeoff has been Approved by <b>".$username."</b> on date <b>".date('d-m-Y')."</b> for Project <b>".$pname."</b>";
 
-                        mail("jimmy@express-business-solutions.com,josh@panoramahamerica.com", $subject, $message, implode("\r\n",$headers));
+                        mail("bluewarestemp@gmail.com,jimmy@express-business-solutions.com,josh@panoramahamerica.com", $subject, $message, implode("\r\n",$headers));
     }
-    if($value="kickback")
+    if($value=="kickback")
     {
     $subject = "Quote manager kicked in Gameboard";
                         $headers = array(
@@ -66,10 +73,11 @@ if($res)
 					    "Reply-To: HELP <HELP@StrategicPointMarketing.com>",
 					    "Content-Type: text/html;charset=iso-8859-1"
 					    );
-                        $message = "<strong>Quote kicked in Gameboard.</strong><br/>";
+                        $message = "<strong>Hello!</strong><br/>";
+         $message =$message."A Takeoff has been kicked back by ".$username." on date <b>".date('d-m-Y')."</b> for Project <b>".$pname."</b>";
                         //$message=$message."A kickback has been sent to ";
 
-                        mail("jimmy@express-business-solutions.com,josh@panoramahamerica.com", $subject, $message, implode("\r\n",$headers));
+                        mail("bluewarestemp@gmail.com,jimmy@express-business-solutions.com,josh@panoramahamerica.com", $subject, $message, implode("\r\n",$headers));
     }
 }
 else
@@ -245,6 +253,43 @@ if($_SESSION['USER_LOGGED_IN']['Level']==0)
                     </div>
                 </div>
             </div>
+            
+            
+            <?php } ?>
+            
+            
+            
+            
+            <?php if($_SESSION['USER_LOGGED_IN']['Level']!=0 && $admin_acc==0) {  $admin_acc++; $status="";
+            $qkk="select * from quote_manager where project_id=$pid and typ='admin' order by id desc Limit 1"; 
+            $rkk=mysql_query($qkk);
+            $fkk=mysql_fetch_array($rkk); $status=$fkk['status'];
+            ?>
+            <?php if($status=="approved") 
+            { ?> <h3 style="
+    background: #9A9A9A;
+    color: white;
+    padding: 10px;
+    text-align: center;
+">Status : Approved</h3>   <?php } ?>
+            <?php if($status=="kickback") 
+            { ?> <h3 style="
+    background: #9A9A9A;
+    color: white;
+    padding: 10px;
+    text-align: center;
+">Status : Disapproved</h3> <?php } ?>
+            
+            <?php if(mysql_num_rows($rkk)==0)
+            { ?> <h3 style="
+    background: #9A9A9A;
+    color: white;
+    padding: 10px;
+    text-align: center;
+">Status : Pending</h3> <?php } ?>
+            
+                                                                                
+           
             
             
             <?php } ?>

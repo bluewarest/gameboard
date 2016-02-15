@@ -79,11 +79,15 @@ $message=$message."To view on Gameboard click <a href='http://gameboard.neverblu
 $message=$message.'</body></html>';
 
 $subject = 'New Action Item Assigned';
-$headers = "CC: jimmy@express-business-solutions.com   \r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+ $headers = array(
 
-if(!mail($email,$subject,$message,$headers))
+					    "From: Gameboard <HELP@StrategicPointMarketing.com>",
+					    "Return-Path: HELP <HELP@StrategicPointMarketing.com>",
+					    "Reply-To: HELP <HELP@StrategicPointMarketing.com>",
+					    "Content-Type: text/html;charset=iso-8859-1"
+					    );
+
+if(!mail($email,$subject,$message,implode("\r\n",$headers)))
 {
 echo 'System was not able to handle the email for lead updates';  
 }
