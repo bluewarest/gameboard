@@ -1,0 +1,78 @@
+*{margin:0;padding:0;}
+
+html,body{font-size:.9em;height:100%;font-family:'Roboto Slab',arial,sans-serif;background:#FFF;background-color:#eee;}
+
+#site{width:100%;height:100%;overflow:auto;
+	a:hover{text-decoration:none;}
+}
+
+#topBar{padding:20px;color:#FFF;/*background:#0083A9;text-align:center;*/}
+
+#footer{padding:20px;color:#FFF;background:#000;text-align:center;}
+
+.form-signin{max-width:330px;padding:15px;margin:0 auto;}
+
+.deactivatedNotice{margin:0 auto;text-align:center;padding:5px;color:#FFF;background:#900;border-radius:4px;}
+
+.form-signin .form-signin-heading, .form-signin .checkbox {margin-bottom: 10px;}
+
+.form-signin .form-control{position:relative;height:auto;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;padding: 10px;font-size: 16px;}
+
+.form-signin .form-control:focus{z-index:2;}
+
+.form-signin input[type="text"]{margin-bottom:-1px;border-bottom-right-radius:0;border-bottom-left-radius:0;}
+
+.form-signin input[type="password"]{margin-bottom:10px;border-top-left-radius:0;border-top-right-radius:0;}
+
+.control-label{margin-top:10px;}
+
+.control-label, .help-block{margin-left:10px;}
+
+.btn{background:#000;}
+
+.spacer-div-line{border-top:1px solid #0083A9;border-bottom:1px solid #0083A9;margin:50px 0 50px 0;}
+
+.spacer-div{height:100px;}
+
+.form-horizontal{max-width:600px;padding:15px;margin: 0 auto;}
+
+#legend span{float:right;margin-bottom:10px;color:#D8D8D8;font-size:14px;}
+
+.btn{background:#0083A9;}
+
+.btn:hover{background:#41B3CF;}
+
+.error-alert{display:none;text-align:center;color:#FFF;padding:10px;background:#900;border-radius:5px;}
+
+#inactive-notice{padding:5px 0 5px 0;background:#900;color:#FFF;text-align:center;border-radius:5px;margin-bottom:5px;box-shadow: 0 0 12px #900;}
+
+#registered{padding:20px 0 30px 0;margin:40px 0 180px 0; background:#0083A9;color:#FFF;text-align:center;display:none !important;}
+
+#register-form{display:none;}
+
+@-moz-document url-prefix() {
+    .searchLi .fa-search {
+    float: right !important;
+    position: relative !important;
+}
+}
+.blue {
+      background-image: url(../img/row.jpg);
+      background-repeat: no-repeat;
+      color: #fff;
+      text-shadow: 2px 2px #5E5858;
+      margin: 0 auto;
+}
+.dark {
+    background-color: #035A78;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.side-nav {
+  background-color: #fff !important;
+}
+.side-nav li a:hover {
+ background:#fff !Important;   
+}
